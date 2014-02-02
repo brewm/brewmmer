@@ -2,7 +2,7 @@
 var fs = require('fs');
 var sqlite3 = require('sqlite3');
 
-var db = new sqlite3.Database('../db//Temperature.db');
+var db = new sqlite3.Database('../db/Temperature.db');
 
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
