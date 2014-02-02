@@ -2,7 +2,7 @@
 var fs = require('fs');
 var sqlite3 = require('sqlite3');
 
-var db = new sqlite3.Database('/brewmmer.db');
+var db = new sqlite3.Database('databases/brewmmer.db');
 
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
