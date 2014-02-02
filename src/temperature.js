@@ -46,6 +46,9 @@ function readTemperature(){
 };
 
 function storeTemperature(record){
+	console.log(record);
+	console.log(record.timestamp);
+	console.log(record.temperature);
 	var statement = db.prepare("INSERT INTO log VALUES (?, ?)");
 	statement.run(record.timestamp, record.temperature);
 	statement.finalize();
