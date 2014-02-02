@@ -3,17 +3,18 @@ var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
 
 var file = "./brewmmer.db";
-var exists = fs.existsSync(file);
+//var exists = fs.existsSync(file);
 
 var db = new sqlite3.Database(file);
 
+/*
 if(!exists){
 	console.error("db not found");
 	db.run("CREATE TABLE log (time bigint primary key, celsius real)");
 }else{
 	console.log("db OK");
 }
-
+*/
 
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
