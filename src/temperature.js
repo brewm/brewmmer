@@ -52,7 +52,7 @@ function storeTemperature(record){
 }
 
 function logTemperature(interval){
-	setInterval(storeTemperature(readTemperature), interval);
+	setInterval(storeTemperature(readTemperature()), interval);
 }
 
 
