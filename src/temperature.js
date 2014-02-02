@@ -1,5 +1,8 @@
 // Load node modules
 var fs = require('fs');
+var sqlite3 = require('sqlite3');
+
+var db = new sqlite3.Database('./Temperature.db');
 
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
@@ -26,13 +29,21 @@ function readTemperature(){
 
 		//write temperature to consol
 		console.log(record);
+		return record;
 	});
 };
 
+function storeTemperature(record){
+	var statement = db.prepare("INSERT INTO log VALUES (?, ?)");
+	statement.run(record.time, record.temperature);
+	statement.finalize();
+}
 
 function logTemperature(interval){
-	setInterval(readTemperature, interval);
+	setInterval(storeTemperature(readTemperature), interval);
 }
+
+
 
 //Run
 console.log("Temperature JS started");
