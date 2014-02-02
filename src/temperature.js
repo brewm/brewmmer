@@ -1,8 +1,16 @@
 // Load node modules
 var fs = require('fs');
-var sqlite3 = require('sqlite3');
+var sqlite3 = require('sqlite3').verbose();
 
-var db = new sqlite3.Database(':memory:');
+var file = "databases/brewmmer.db";
+var exists = fs.existsSync(file);
+if(!exists){
+	console.error("db not found");
+}else{
+	console.log("db OK");
+}
+
+var db = new sqlite3.Database(file);
 
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
