@@ -2,7 +2,7 @@
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
 
-var file = "databases/brewmmer.db";
+var file = "./brewmmer.db";
 var exists = fs.existsSync(file);
 
 var db = new sqlite3.Database(file);
