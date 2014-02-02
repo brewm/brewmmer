@@ -1,10 +1,6 @@
 // Load node modules
 var fs = require('fs');
 
-//Run
-console.log("Temperature JS started");
-readTemperature();
-
 function readTemperature(){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
 	{
@@ -22,8 +18,18 @@ function readTemperature(){
 		// Round to one decimal place
 		temp = Math.round(temp * 10) / 10;
 
-		console.log(data);
-
+		//write temperature to consol
 		console.log(temp);
 	});
 };
+
+
+function logTemperature(interval){
+	setInterval(readTemperature, interval);
+}
+
+//Run
+console.log("Temperature JS started");
+
+var msecs = (10) * 1000;
+logTemperature(msecs);
