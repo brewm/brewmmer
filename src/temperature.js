@@ -35,7 +35,7 @@ function readTemperature(){
 
 		//Build JSON record
 		var record = {
-			time : Date.now(),
+			timestamp : Date.now(),
 			temperature : temp
 		};
 
@@ -47,7 +47,7 @@ function readTemperature(){
 
 function storeTemperature(record){
 	var statement = db.prepare("INSERT INTO log VALUES (?, ?)");
-	statement.run(record.time, record.temperature);
+	statement.run(record.timestamp, record.temperature);
 	statement.finalize();
 }
 
