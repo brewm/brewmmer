@@ -18,8 +18,14 @@ function readTemperature(){
 		// Round to one decimal place
 		temp = Math.round(temp * 10) / 10;
 
+		//Build JSON record
+		var record = {
+			time : Date.now(),
+			temperature : temp
+		};
+
 		//write temperature to consol
-		console.log(temp);
+		console.log(record);
 	});
 };
 
