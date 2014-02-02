@@ -16,7 +16,7 @@ if(!exists){
 }
 */
 
-function readTemperature(){
+function readTemperature(callback){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
 	{
 		if (err){
@@ -41,21 +41,21 @@ function readTemperature(){
 
 		//write temperature to consol
 		console.log(record);
-		return record;
+		callback(record);
 	});
 };
 
 function storeTemperature(record){
-	console.log(record);
-	console.log(record.timestamp);
-	console.log(record.temperature);
 	var statement = db.prepare("INSERT INTO log VALUES (?, ?)");
 	statement.run(record.timestamp, record.temperature);
 	statement.finalize();
 }
 
 function logTemperature(interval){
-	setInterval(storeTemperature(readTemperature()), interval);
+	// Call the readTemp function with the insertTemp function as output to get initial reading
+	readTemperature(storeTemperature);
+	// Set the repeat interval (milliseconds). Third argument is passed as callback function to first (i.e. readTemp(insertTemp)).
+	setInterval(readTemperature, interval, storeTemperature);
 }
 
 
