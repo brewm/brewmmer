@@ -63,5 +63,5 @@ function logTemperature(interval){
 //Run
 console.log("Temperature JS started");
 
-var msecs = (10) * 1000;
+var msecs = (60*15) * 1000;
 logTemperature(msecs);
