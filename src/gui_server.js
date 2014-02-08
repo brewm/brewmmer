@@ -23,7 +23,8 @@ fs.readFile('./temp_plot.html', function (err, html) {
 
 function parseTemperatures(json) {
     for( var k = 0; k < json.length; ++k ) {
-		json[k]["time"] = new Date(json[k]["time"]).customFormat( "#YYYY#/#DD#/#MM# #hh#:#mm#:#ss#" ) ;
+    	var date = new Date(json[k]["time"]);
+		json[k]["time"] = date.getFullYear() + "/"+ date.getMonth() + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 	}
 	return json;
 }
