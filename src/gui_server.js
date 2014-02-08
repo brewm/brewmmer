@@ -14,11 +14,11 @@ fs.readFile('./temp_plot.html', function (err, html) {
 			console.error(err);
 			process.exit(1);
 	}
-//	http.createServer(function(request, response) {  
-//		response.writeHeader(200, {"Content-Type": "text/html"});  
-//		response.write(html);  
-//		response.end();  
-//	}).listen(3552);
+	http.createServer(function(request, response) {  
+		response.writeHeader(200, {"Content-Type": "text/html"});  
+		response.write(html);  
+		response.end();  
+	}).listen(3552);
 });
 
 function parseTemperatures(json) {
@@ -50,9 +50,7 @@ http.createServer(function(request, response) {
 
 		//refactor object
 		var temperatures = parseTemperatures(obj.records)
-		console.log(temperatures);
 		temperatures = replaceKeys(temperatures)
-		console.log(temperatures);
 
 		var opts = {
 			"dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
@@ -71,8 +69,6 @@ http.createServer(function(request, response) {
 		  ]
 		};
 
-
-
 		response.writeHeader(200, {"Content-Type": "text/html"});  
 		response.write(
 			"<html> <head><script type='text/javascript' src='lib/d3.v3.min.js'></script><script type='text/javascript' src='lib/xcharts.js'></script><LINK href='lib/xcharts.css' rel='stylesheet' type='text/css'></head><body><h1>Brewmmer Temperature</h1><script>var myChart = new xChart('line', "+data+", '#Brewmmer Temperature');</script><figure style='width: 400px; height: 300px;' id='myChart'></figure></body></html>"
@@ -80,5 +76,5 @@ http.createServer(function(request, response) {
 		response.end();  
 		//JSON.stringify(res, null, 2);
 	});
-}).listen(3552);
+});//.listen(3552);
 
