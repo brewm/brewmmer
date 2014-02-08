@@ -57,7 +57,7 @@ function getTemperatures(req, res, next){
 			if (err){
 				return;
 			}
-			var records = {records:[rows]}
+			var records = {records:rows}
 			res.send(records);
 			return next();
 		});
