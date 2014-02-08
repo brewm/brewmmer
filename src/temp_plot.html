@@ -18,7 +18,11 @@
 				console.error(err);
 				process.exit(1);
 			}
+			document.write(req);
+
+			document.write("<b>Response:</b>");
 			document.write(res);
+			document.write(obj);
 			document.write(JSON.stringify(res, null, 2));
 		});
 	</script>
