@@ -3,7 +3,6 @@
 
 	<h1>Brewmmer Temperature</h1>
 
-	<figure style="width: 400px; height: 300px;" id="tempChart"></figure>
 	<script type='text/javascript'>
 		var restify = require('restify');
 
@@ -13,13 +12,14 @@
 		});
 
 
-		client.basicAuth('$login', '$password');
+		//client.basicAuth('$login', '$password');
 		client.get('/temperatures/20', function(err, req, res, obj) {
 			assert.ifError(err);
-			JSON.stringify(obj, null, 2)
-			console.log(JSON.stringify(obj, null, 2));
+			document.write(JSON.stringify(obj, null, 2));
 		});
 	</script>
+
+	<figure style="width: 400px; height: 300px;" id="tempChart"></figure>
 	<script type='text/javascript'>
 		var data = {"dom":"example","width":900,"height":400,"xScale":"ordinal","yScale":"linear","main":[{"data":[{"x":4,"y":11},{"x":6,"y":7},{"x":8,"y":14}]}],"id":"example"},
 		chartType = "bar",
