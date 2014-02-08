@@ -15,7 +15,8 @@
 		//client.basicAuth('$login', '$password');
 		client.get('/temperatures/20', function(err, req, res, obj) {
 			assert.ifError(err);
-			document.write(JSON.stringify(obj, null, 2));
+			document.write(res);
+			document.write(JSON.stringify(res, null, 2));
 		});
 	</script>
 
