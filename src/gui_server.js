@@ -29,7 +29,7 @@ http.createServer(function(request, response) {
 			console.error(err);
 			process.exit(1);
 		}
-
-		JSON.stringify(res, null, 2);
+		response.write(res); 
+		//JSON.stringify(res, null, 2);
 	});
 }).listen(3552);
