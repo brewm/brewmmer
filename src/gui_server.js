@@ -75,8 +75,7 @@ http.createServer(function(request, response) {
 
 		response.writeHeader(200, {"Content-Type": "text/html"});  
 		response.write(
-			"<!DOCTYPE html>
-			<html>
+			"<html>
 				<head>
 					<script type='text/javascript' src='lib/d3.v3.min.js'></script>
 					<script type='text/javascript' src='lib/xcharts.js'></script>
