@@ -31,7 +31,7 @@ http.createServer(function(request, response) {
 		}
 		console.log(obj);
 		response.writeHeader(200, {"Content-Type": "text/html"});  
-		response.write("<html><body>"+obj+"</html></body>"); 
+		response.write("<html><body>"+JSON.stringify(obj, null, 2)+"</html></body>"); 
 		response.end();  
 		//JSON.stringify(res, null, 2);
 	});
