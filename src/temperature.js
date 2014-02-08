@@ -1,20 +1,12 @@
 // Load node modules
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
+var http = require('http');
 
 var file = "./brewmmer.db";
-//var exists = fs.existsSync(file);
 
 var db = new sqlite3.Database(file);
 
-/*
-if(!exists){
-	console.error("db not found");
-	db.run("CREATE TABLE log (time bigint primary key, celsius real)");
-}else{
-	console.log("db OK");
-}
-*/
 
 function readTemperature(callback){
 	fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer)
@@ -40,7 +32,7 @@ function readTemperature(callback){
 		};
 
 		//write temperature to consol
-		console.log(record);
+		//console.log(record);
 		callback(record);
 	});
 };
@@ -54,9 +46,20 @@ function storeTemperature(record){
 function logTemperature(interval){
 	// Call the readTemp function with the insertTemp function as output to get initial reading
 	readTemperature(storeTemperature);
-	// Set the repeat interval (milliseconds). Third argument is passed as callback function to first (i.e. readTemp(insertTemp)).
+	// Set the repeat interval (milliseconds). Third argument is passed as callback function to first (i.e. readTemp(storeTemperature)).
 	setInterval(readTemperature, interval, storeTemperature);
 }
+
+function getTemperatures(num_records, callback){
+	var current_temp = db.all("SELECT * FROM log ORDER BY time DESC LIMIT ?;", num_records,
+		function(err, rows){
+			if (err){
+				return;
+			}
+			var records = {records:[rows]}
+			callback(records);
+		});
+};
 
 
 
