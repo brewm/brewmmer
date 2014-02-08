@@ -1,42 +1,19 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<script type='text/javascript' src='lib/d3.v3.min.js'></script>
+		<script type='text/javascript' src='lib/xcharts.js'></script>
+		<LINK href='lib/xcharts.css' rel='stylesheet' type='text/css'>
+	</head>
 	<body>
 
 	<h1>Brewmmer Temperature</h1>
 
 	<script>
-
-		document.write("Start");
-		var restify = require('restify');
-		document.write("var restify = require('restify');");
-
-		// Creates a JSON client
-		var client = restify.createJsonClient({
-			url: 'http://brewmmer.dyndns.org:3551'
-		});
-		document.write("http://brewmmer.dyndns.org:3551");
-
-		//client.basicAuth('$login', '$password');
-		client.get('/temperatures/20', function(err, req, res, obj) {
-			if (err){
-				document.write("<b>ERROR:</b>" + err);
-				console.error(err);
-				process.exit(1);
-			}
-			document.write(req);
-
-			document.write("<b>Response:</b>");
-			document.write(res);
-			document.write(obj);
-			document.write(JSON.stringify(res, null, 2));
-		});
+		var myChart = new xChart('line', data, '#Brewmmer Temperature');
 	</script>
 
-	<figure style="width: 400px; height: 300px;" id="tempChart"></figure>
-	<script type='text/javascript'>
-		var data = {"dom":"example","width":900,"height":400,"xScale":"ordinal","yScale":"linear","main":[{"data":[{"x":4,"y":11},{"x":6,"y":7},{"x":8,"y":14}]}],"id":"example"},
-		chartType = "bar",
-		myChart = new xChart(chartType, data, '#example');
-	</script>
+	<figure style='width: 400px; height: 300px;' id='myChart'></figure>
+
 	</body>
 </html>
