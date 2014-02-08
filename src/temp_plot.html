@@ -10,11 +10,12 @@
 		var client = restify.createJsonClient({
 			url: 'http://brewmmer.dyndns.org:3551'
 		});
-
+		document.write("http://brewmmer.dyndns.org:3551");
 
 		//client.basicAuth('$login', '$password');
 		client.get('/temperatures/20', function(err, req, res, obj) {
 			if (err){
+				document.write("<b>ERROR:</b>" + err);
 				console.error(err);
 				process.exit(1);
 			}
