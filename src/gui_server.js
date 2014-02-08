@@ -30,6 +30,6 @@ http.createServer(function(request, response) {
 			process.exit(1);
 		}
 
-		JSON.stringify(res, null, 2));
+		JSON.stringify(res, null, 2);
 	});
 }).listen(3552);
