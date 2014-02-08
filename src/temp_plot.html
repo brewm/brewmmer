@@ -3,15 +3,11 @@
 	<body>
 
 	<h1>Brewmmer Temperature</h1>
-	<script>
-		document.write("<h1>This is a heading</h1>");
-		document.write("<p>This is a paragraph</p>");
-	</script>
-
 
 	<script>
 		var restify = require('restify');
-
+		document.write("var restify = require('restify');");
+		
 		// Creates a JSON client
 		var client = restify.createJsonClient({
 			url: 'http://brewmmer.dyndns.org:3551'
