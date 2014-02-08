@@ -29,9 +29,9 @@ http.createServer(function(request, response) {
 			console.error(err);
 			process.exit(1);
 		}
-		console.log(res);
+		console.log(obj);
 		response.writeHeader(200, {"Content-Type": "text/html"});  
-		response.write(res); 
+		response.write("<html><body>"+obj+"</html></body>"); 
 		response.end();  
 		//JSON.stringify(res, null, 2);
 	});
