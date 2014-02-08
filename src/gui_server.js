@@ -75,19 +75,7 @@ http.createServer(function(request, response) {
 
 		response.writeHeader(200, {"Content-Type": "text/html"});  
 		response.write(
-			"<html> <head>
-<script type='text/javascript' src='lib/d3.v3.min.js'></script>
-<script type='text/javascript' src='lib/xcharts.js'></script>
-<LINK href='lib/xcharts.css' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<h1>Brewmmer Temperature</h1>
-<script>
-var myChart = new xChart('line', "+data+", '#Brewmmer Temperature');
-</script>
-<figure style='width: 400px; height: 300px;' id='myChart'></figure>
-</body>
-</html>"
+			"<html> <head><script type='text/javascript' src='lib/d3.v3.min.js'></script><script type='text/javascript' src='lib/xcharts.js'></script><LINK href='lib/xcharts.css' rel='stylesheet' type='text/css'></head><body><h1>Brewmmer Temperature</h1><script>var myChart = new xChart('line', "+data+", '#Brewmmer Temperature');</script><figure style='width: 400px; height: 300px;' id='myChart'></figure></body></html>"
 		); 
 		response.end();  
 		//JSON.stringify(res, null, 2);
