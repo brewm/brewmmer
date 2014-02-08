@@ -21,6 +21,14 @@ fs.readFile('./temp_plot.html', function (err, html) {
 //	}).listen(3552);
 });
 
+function replaceByValue( json, field) {
+    for( var k = 0; k < json.length; ++k ) {
+		json[k][field] = new Date(json[k][field]) ;
+	}
+	return json;
+}
+
+
 
 http.createServer(function(request, response) { 
 	//client.basicAuth('$login', '$password');
@@ -29,10 +37,36 @@ http.createServer(function(request, response) {
 			console.error(err);
 			process.exit(1);
 		}
-		console.log(obj);
+
+		//refactor object
+		var temperatures = replaceByValue(obj.records, "time")
+		console.log(temperatures);
+
+
+		var opts = {
+			"dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
+			"tickFormatX": function (x) { return d3.time.format('%A')(x); }
+		};
+
+		var data = {
+		  "xScale": "time",
+		  "yScale": "linear",
+		  "type": "line",
+		  "main": [
+		    {
+		      "className": ".temperatures",
+		      "data": obj.records
+		    }
+		  ]
+		};
+
+
+		var myChart = new xChart('line', data, '#example3', opts);
+
 		response.writeHeader(200, {"Content-Type": "text/html"});  
-		response.write("<html><body>"+JSON.stringify(obj, null, 2)+"</html></body>"); 
+		response.write("<html><body>"+"<figure style=\"width: 400px; height: 300px;\" id=\"myChart\"></figure>"+"</html></body>"); 
 		response.end();  
 		//JSON.stringify(res, null, 2);
 	});
 }).listen(3552);
+
