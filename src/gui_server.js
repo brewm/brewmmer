@@ -21,13 +21,22 @@ fs.readFile('./temp_plot.html', function (err, html) {
 //	}).listen(3552);
 });
 
-function replaceByValue( json, field) {
+function parseTemperatures(json) {
     for( var k = 0; k < json.length; ++k ) {
-		json[k][field] = new Date(json[k][field]) ;
+		json[k]["time"] = new Date(json[k]["time"]).customFormat( "#YYYY#/#DD#/#MM# #hh#:#mm#:#ss#" ) ;
 	}
 	return json;
 }
 
+function replaceKeys(json) {
+	for( var k = 0; k < json.length; ++k ) {
+		json[k].x = json[k].time;
+		json[k].y = json[k].celsius;
+		delete json[k].time;
+		delete json[k].celsius;
+	}
+	return json;
+}
 
 
 http.createServer(function(request, response) { 
@@ -39,9 +48,10 @@ http.createServer(function(request, response) {
 		}
 
 		//refactor object
-		var temperatures = replaceByValue(obj.records, "time")
+		var temperatures = parseTemperatures(obj.records)
 		console.log(temperatures);
-
+		temperatures = replaceKeys(temperatures)
+		console.log(temperatures);
 
 		var opts = {
 			"dataFormatX": function (x) { return d3.time.format('%Y-%m-%d').parse(x); },
@@ -55,7 +65,7 @@ http.createServer(function(request, response) {
 		  "main": [
 		    {
 		      "className": ".temperatures",
-		      "data": obj.records
+		      "data": temperatures
 		    }
 		  ]
 		};
