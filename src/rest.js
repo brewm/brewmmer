@@ -13,12 +13,12 @@ server
 server.get('test', ok);
 server.get('temperature', readTemperature);
 
-server.listen(8080, function() {
+server.listen(3551, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
 
 function ok(req, res, next) {
-  res.send('I\'m alive! ');
+  res.send('I\'m alive! \n');
 }
 
 
