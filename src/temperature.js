@@ -1,7 +1,6 @@
 // Load node modules
 var fs = require('fs');
 var sqlite3 = require('sqlite3').verbose();
-var http = require('http');
 
 var file = "./brewmmer.db";
 
@@ -49,19 +48,6 @@ function logTemperature(interval){
 	// Set the repeat interval (milliseconds). Third argument is passed as callback function to first (i.e. readTemp(storeTemperature)).
 	setInterval(readTemperature, interval, storeTemperature);
 }
-
-function getTemperatures(num_records, callback){
-	var current_temp = db.all("SELECT * FROM log ORDER BY time DESC LIMIT ?;", num_records,
-		function(err, rows){
-			if (err){
-				return;
-			}
-			var records = {records:[rows]}
-			callback(records);
-		});
-};
-
-
 
 //Run
 console.log("Temperature JS started");

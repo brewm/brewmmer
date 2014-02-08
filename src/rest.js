@@ -1,24 +1,25 @@
 var restify = require('restify');
 var fs = require('fs');
 
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database("./brewmmer.db");
 
 var server = restify.createServer({
   name: 'brewmmer',
   version: '1.0.0'
 });
-server
-  .use(restify.fullResponse())
-  .use(restify.bodyParser())
+server.use(restify.queryParser());
 
 server.get('test', ok);
 server.get('temperature', readTemperature);
+server.get('temperatures/:limit', getTemperatures);
 
 server.listen(3551, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
 
 function ok(req, res, next) {
-  res.send('I\'m alive! \n');
+	res.send('I\'m alive! \n');
 }
 
 
@@ -48,4 +49,16 @@ function readTemperature(req, res, next){
 		res.send(record);
 		return next();
 	});
+};
+
+function getTemperatures(req, res, next){
+	var current_temp = db.all("SELECT * FROM log ORDER BY time DESC LIMIT ?;", req.params.limit,
+		function(err, rows){
+			if (err){
+				return;
+			}
+			var records = {records:[rows]}
+			res.send(records);
+			return next();
+		});
 };
