@@ -14,27 +14,27 @@ fs.readFile('./temp_plot.html', function (err, html) {
 			console.error(err);
 			process.exit(1);
 	}
-	http.createServer(function(request, response) {  
-		response.writeHeader(200, {"Content-Type": "text/html"});  
-		response.write(html);  
-		response.end();  
-	}).listen(3552);
+//	http.createServer(function(request, response) {  
+//		response.writeHeader(200, {"Content-Type": "text/html"});  
+//		response.write(html);  
+//		response.end();  
+//	}).listen(3552);
 });
 
 function parseTemperatures(json) {
     for( var k = 0; k < json.length; ++k ) {
-    	var date = new Date(json[k]["time"]);
-		json[k]["time"] = date.getFullYear() + "/"+ date.getMonth() + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    	var date = new Date(json[k]["timestamp"]);
+		json[k]["timestamp"] = date.getFullYear() + "/"+ date.getMonth() + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 	}
 	return json;
 }
 
 function replaceKeys(json) {
 	for( var k = 0; k < json.length; ++k ) {
-		json[k].x = json[k].time;
-		json[k].y = json[k].celsius;
-		delete json[k].time;
-		delete json[k].celsius;
+		json[k].x = json[k].timestamp;
+		json[k].y = json[k].temperature;
+		delete json[k].timestamp;
+		delete json[k].temperature;
 	}
 	return json;
 }
@@ -76,5 +76,5 @@ http.createServer(function(request, response) {
 		response.end();  
 		//JSON.stringify(res, null, 2);
 	});
-});//.listen(3552);
+}).listen(3552);
 
