@@ -52,11 +52,12 @@ function readTemperature(req, res, next){
 };
 
 function getTemperatures(req, res, next){
-	var current_temp = db.all("SELECT * FROM temperature_log ORDER BY time DESC LIMIT ?;", req.params.limit,
+	var current_temp = db.all("SELECT * FROM temperature_log ORDER BY timestamp DESC LIMIT ?;", req.params.limit,
 		function(err, rows){
-			if (err){
-				return;
-			}
+		if (err){
+			console.error(err);
+			process.exit(1);
+		}
 			var records = {records:rows}
 			res.send(records);
 			return next();
