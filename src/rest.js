@@ -8,8 +8,11 @@ var server = restify.createServer({
   name: 'brewmmer',
   version: '1.0.0'
 });
-server.use(restify.queryParser());
-
+server
+  .use(restify.queryParser())
+  .use(restify.fullResponse())
+  .use(restify.bodyParser());
+  
 server.get('test', ok);
 server.get('temperature', readTemperature);
 server.get('temperatures/:limit', getTemperatures);

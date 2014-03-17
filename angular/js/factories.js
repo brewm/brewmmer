@@ -41,11 +41,11 @@ angular.module( 'brewmmer.factories', [] )
 	var factory = {};
 	
 	factory.getTemperatures = function () {
-        return $http.get('brewmmer.dyndns.org:3551/temperature');
+        return $http.get('http://brewmmer.dyndns.org:3551/test');
     };
 	
 	factory.getTemperaturesAsync = function(callback) {
-		$http.get('http://brewmmer.dyndns.org:3551/temperature')
+		$http.get('http://rest-service.guides.spring.io/greeting')//'http://brewmmer.dyndns.org:3551/temperature')
 		.success(function(response, status, headers, config){
 			return callback(response, status, headers, config);
 		})
