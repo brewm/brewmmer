@@ -61,7 +61,10 @@ function getTemperatures(req, res, next){
 			console.error(err);
 			process.exit(1);
 		}
-			var records = {records:rows}
+			var records = {records:rows};
+			records.records.sort(function(a, b) {
+				return a.timestamp - b.timestamp;
+			});
 			res.send(records);
 			return next();
 		});

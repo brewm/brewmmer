@@ -4,7 +4,7 @@ angular.module( 'brewmmer.factories', [] )
 	
 	function getFormattedDate(longDate){
 		var date = new Date(longDate);
-		return date.getFullYear() + "/"+ date.getMonth() + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+		return date.getFullYear() + "/"+ (date.getMonth()+1) + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 	}
 
 	factory.getTemperatures = function(limit, callback) {
