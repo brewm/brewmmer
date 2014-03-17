@@ -1,6 +1,10 @@
 angular.module( 'brewmmer.controllers', [] )
   .controller( 'LineCtrl', function ( $scope , dataFactory) {
-	$scope.data = dataFactory.getTemperatures();
+	$scope.status = "";
+	$scope.data = {};
+	$scope.limit = 10;
+
+	
     $scope.options =  {
 	// Chart.js options can go here.
       segmentShowStroke : true,
@@ -14,27 +18,21 @@ angular.module( 'brewmmer.controllers', [] )
       animateScale : false,
       onAnimationComplete : null
     };
-  }).controller( 'DataController', function($scope, tempDataFactrory){
-	$scope.data = {};
-	$scope.hihi = "Ajjaj.";
-	
-	getTemp();
+	$scope.refresh = function(){
+		dataFactory.getTemperatures($scope.limit, function(response, status) {
+			$scope.status = status=200?'':status;
+			$scope.data = response;
+		});
+	}
+	$scope.refresh();
+  }).controller( 'DataController', function( $scope, $timeout, dataFactory) {
+    $scope.data = {};
 
-    function getTemp() {
-        tempDataFactrory.getTemperatures()
-            .success(function (response, status, headers, config) {
-				$scope.hihi = status;
-                $scope.data = response;
-            })
-            .error(function (response, status, headers, config) {
-                $scope.data = response;//'Unable to load customer data: ' + error.message;
-				$scope.hihi = 'err';
-            });
-    };
-	
-	/*tempDataFactrory.getTemperaturesAsync(function callback(response, status, headers, config) {
-		$scope.data = response;
-		$scope.hihi = status;
-	});
-  */
+    (function tick() {
+        dataFactory.getTemperature(function(response){
+			$scope.data = response.temperature + " C";
+            $timeout(tick, 1000);
+        });
+    })();
+  
   });

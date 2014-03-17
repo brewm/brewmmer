@@ -1,33 +1,28 @@
 <!doctype html>
 <html data-ng-app="brewmmer">
 <head>
-	<title>Brewmmer</title>
+	<div data-ng-controller="DataController">
+		<title>Brewmmer - {{data}}</title>
+	</div> 
 </head>
 <body>
-	<div>
-      <label>Name:</label>
-      <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello {{yourName}}!</h1>
-    </div>
-
 	<div data-ng-controller="LineCtrl">
-		<canvas data-tc-chartjs data-chart-type="line" data-chart-options="options" data-chart-data="data" width="800" height="350"></canvas>
-	</div> 
+		{{status}} 
+		<hr>
+		<div>
 
-	<div data-ng-controller="LineCtrl">
-		<ul>
-			<li data-ng-repeat="temp in data.labels">
-				{{temp}}
-			</li>
-		</ul>
-	</div> 
+		  <form ng-submit="refresh()">
+			<label>Limit:</label>
+			<input type="number" ng-model="limit">
+			<input class="btn-primary" type="submit" value="refresh">
+		  </form>
+		  <hr>
+		</div>
+
 	
-	<div data-ng-controller="DataController">  
-		{{hihi}}   
-		<br>
-		{{data}}
-	</div>
+		<canvas data-tc-chartjs data-chart-type="line" data-chart-options="options" data-chart-data="data" width="1300" height="350"></canvas>
+	</div> 
+
 
 <script src="lib/angular.min.js"></script>
 <script src="lib/Chart.js"></script>
