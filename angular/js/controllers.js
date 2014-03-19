@@ -7,6 +7,7 @@ angular.module( 'brewmmer.controllers', [] )
 	
     $scope.options =  {
 	// Chart.js options can go here.
+	  bezierCurve : true,
       segmentShowStroke : true,
       segmentStrokeColor : '#fff',
       segmentStrokeWidth : 24,
