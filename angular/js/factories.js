@@ -1,18 +1,13 @@
 angular.module( 'brewmmer.factories', [] )
-  .factory( 'dataFactory', function ($http) {
+  .factory( 'dataFactory', function ($http, $filter) {
 	var factory = {};
-	
-	function getFormattedDate(longDate){
-		var date = new Date(longDate);
-		return date.getFullYear() + "/"+ (date.getMonth()+1) + "/"+  date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-	}
 
 	factory.getTemperatures = function(limit, callback) {
         $http.get('http://brewmmer.dyndns.org:3551/temperatures/'+limit)
 		.success(function(response, status, headers, config){
 			var data = {};
 			data.labels = response.records.map(function(rec){
-				return getFormattedDate(rec.timestamp);
+				return $filter('date')(rec.timestamp, 'yyyy-MM-dd HH:mm:ss'); //getFormattedDate(rec.timestamp);
 			});
 		
 			data.datasets = [
