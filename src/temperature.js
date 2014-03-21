@@ -12,7 +12,7 @@ exports.get = function (callback){
 		var temperature  = parseFloat(data[data.length-1].split("=")[1])/1000.0;
 		
 		result.timestamp = Date.now();
-		result.temperature = Math.round(temp * 10) / 10;
+		result.temperature = Math.round(temperature * 10) / 10;
 
 		callback(null, result);
 	});
