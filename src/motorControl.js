@@ -36,6 +36,7 @@ function setStep(w1, w2, w3, w4){
 }
 
 function push(pin, value){
+  console.log('push: ' + pin + 'to: ' + value);
   gpio.open(pin, "output", function(err) {
 	console.log('open:' + pin);
     if(err) return console.error(err);
@@ -47,6 +48,6 @@ function push(pin, value){
 }
 
 
-var delay = 10;
+var delay = 50;
 var steps = 30;
 forward1phase(delay, steps);
