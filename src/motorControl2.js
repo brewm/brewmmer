@@ -1,9 +1,9 @@
-var gpio = require('pi-gpio');
+var gpio = require('rpi-gpio');
 
-const coil_A_1_pin = 12;
-const coil_A_2_pin = 16;
-const coil_B_1_pin = 18;
-const coil_B_2_pin = 22;
+const coil_A_1_pin = 18;
+const coil_A_2_pin = 23;
+const coil_B_1_pin = 24;
+const coil_B_2_pin = 25;
 
 function sleep(milliseconds) {
   var start = new Date().getTime();
@@ -28,21 +28,18 @@ function forward1phase(delay, steps){
 }
 
 function setStep(w1, w2, w3, w4){
-  push(coil_A_1_pin, w1);
-  push(coil_A_2_pin, w2);
-  push(coil_B_1_pin, w3);
-  push(coil_B_2_pin, w4); 
+  gpio.setup(coil_A_1_pin, gpio.DIR_OUT, push(coil_A_1_pin, w1));
+  gpio.setup(coil_A_2_pin, gpio.DIR_OUT, push(coil_A_2_pin, w2));
+  gpio.setup(coil_B_1_pin, gpio.DIR_OUT, push(coil_B_1_pin, w3));
+  gpio.setup(coil_B_2_pin, gpio.DIR_OUT, push(coil_B_2_pin, w4));
 }
 
 function push(pin, value){
-  gpio.open(pin, "output", function(err) {
-    if(err) return console.error(err);
-    gpio.write(pin, value, function() { 
-      gpio.close(pin);
-    });
+  gpio.write(pin, true, function(err) {
+    if (err) throw err;
+    console.log('Written to pin');
   });
 }
-
 
 var delay = 10;
 var steps = 30;
