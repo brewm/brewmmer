@@ -1,9 +1,9 @@
 var gpio = require('pi-gpio');
 
-const coil_A_1_pin = 18;
-const coil_A_2_pin = 23;
-const coil_B_1_pin = 24;
-const coil_B_2_pin = 25;
+const coil_A_1_pin = 12;
+const coil_A_2_pin = 16;
+const coil_B_1_pin = 18;
+const coil_B_2_pin = 22;
 
 function sleep(milliseconds) {
   var start = new Date().getTime();
