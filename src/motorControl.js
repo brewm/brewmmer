@@ -16,6 +16,7 @@ function sleep(milliseconds) {
    
 function forward1phase(delay, steps){
   for (var i=0;i<steps;i++){
+    console.log('Start the 1 phase rotate...');
     setStep(1, 0, 0, 0);
     sleep(delay);
     setStep(0, 1, 0, 0);
@@ -36,8 +37,10 @@ function setStep(w1, w2, w3, w4){
 
 function push(pin, value){
   gpio.open(pin, "output", function(err) {
+	console.log('open:' + pin);
     if(err) return console.error(err);
     gpio.write(pin, value, function() { 
+	  console.log('write:' + pin);
       gpio.close(pin);
     });
   });

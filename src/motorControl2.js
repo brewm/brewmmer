@@ -36,8 +36,8 @@ function setStep(w1, w2, w3, w4){
 
 function push(pin, value){
   gpio.write(pin, true, function(err) {
-    if (err) throw err;
-    console.log('Written to pin');
+    if(err) return console.error(err);
+    console.log('Written to' + coil_A_1_pin);
   });
 }
 
