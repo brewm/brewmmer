@@ -48,6 +48,6 @@ function push(pin, value){
 }
 
 
-var delay = 50;
+var delay = 1000;
 var steps = 30;
 forward1phase(delay, steps);
