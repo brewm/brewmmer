@@ -1,53 +1,65 @@
-var gpio = require('pi-gpio');
+var Gpio = require('onoff').Gpio; // Constructor function for Gpio objects.
 
-const coil_A_1_pin = 12;
-const coil_A_2_pin = 16;
-const coil_B_1_pin = 18;
-const coil_B_2_pin = 22;
+var coil_A1_pin = new Gpio(18, 'out');
+var coil_A2_pin = new Gpio(23, 'out');
+var coil_B1_pin = new Gpio(24, 'out');
+var coil_B2_pin = new Gpio(25, 'out');
 
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;     
-    }   
-  } 
-}
-   
-function forward1phase(delay, steps){
+var queue = [];
+
+function forward1phase(steps){
   for (var i=0;i<steps;i++){
-    console.log('Start the 1 phase rotate...');
-    setStep(1, 0, 0, 0);
-    sleep(delay);
-    setStep(0, 1, 0, 0);
-    sleep(delay);
-    setStep(0, 0, 1, 0);
-    sleep(delay);
-    setStep(0, 0, 0, 1);
-    sleep(delay);
+    queue.push({ A1 : 1, A2 : 0, B1 : 0, B2 : 0});
+    queue.push({ A1 : 0, A2 : 1, B1 : 0, B2 : 0});
+    queue.push({ A1 : 0, A2 : 0, B1 : 1, B2 : 0});
+    queue.push({ A1 : 0, A2 : 0, B1 : 0, B2 : 1});
   }
 }
 
-function setStep(w1, w2, w3, w4){
-  push(coil_A_1_pin, w1);
-  push(coil_A_2_pin, w2);
-  push(coil_B_1_pin, w3);
-  push(coil_B_2_pin, w4); 
-}
-
 function push(pin, value){
-  console.log('push: ' + pin + 'to: ' + value);
-  gpio.open(pin, "output", function(err) {
-	console.log('open:' + pin);
-    if(err) return console.error(err);
-    gpio.write(pin, value, function() { 
-	  console.log('write:' + pin);
-      gpio.close(pin);
-    });
+  pin.write(value, function(err){
+    if (err) throw err;
   });
 }
 
+function setStep(w1, w2, w3, w4){
+  push(coil_A1_pin, w1);
+  push(coil_A2_pin, w2);
+  push(coil_B1_pin, w3);
+  push(coil_B2_pin, w4); 
+}
 
-var delay = 1000;
-var steps = 30;
+function async(arg, callback) {
+  setTimeout(function() { 
+    setStep(arg.A1, arg.A2, arg.B1, arg.B2);
+    callback(); 
+  }, delay);
+}
+
+function final() { 
+  coil_A1_pin.unexport();
+  coil_A2_pin.unexport();
+  coil_B1_pin.unexport();
+  coil_B2_pin.unexport();
+  console.log('Done');   
+}
+
+function run(item) {
+  if(item) {
+    async( item, function() {
+      return run(queue.shift());
+    });
+  } else {
+    return final();
+  }
+}
+
+run(queue.shift());
+
+
+
+
+
+var delay = 8;
+var steps = 512;
 forward1phase(delay, steps);
