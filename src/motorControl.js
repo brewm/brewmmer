@@ -5,7 +5,6 @@ var coil_A2_pin = new Gpio(23, 'out');
 var coil_B1_pin = new Gpio(24, 'out');
 var coil_B2_pin = new Gpio(25, 'out');
 
-var queue = [];
 
 function forward1phase(steps){
   for (var i=0;i<steps;i++){
@@ -47,19 +46,22 @@ function final() {
 function run(item) {
   if(item) {
     async( item, function() {
-      return run(queue.shift());
+      run(queue.shift());
     });
   } else {
-    return final();
+    final();
   }
 }
 
+
+var delay = 8;
+var steps = 512;
+
+var queue = [];
+forward1phase(steps);
 run(queue.shift());
 
 
 
 
 
-var delay = 8;
-var steps = 512;
-forward1phase(delay, steps);
