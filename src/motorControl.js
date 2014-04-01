@@ -125,7 +125,7 @@ module.exports.backwardsHs = function(steps){
   }
 }
 
-var delay = 10;
+var delay = 20;
 
 /**
   Send the prepared commands to the Stepping motor
