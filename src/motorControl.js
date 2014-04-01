@@ -133,8 +133,10 @@ var delay;
 module.exports.run = function(delay_){
   delay = delay_;
   
-  async.eachLimit(queue, 1, step,  function(err){
+  async.mapLimit(queue, 1, step,  function(err, results){
     if (err) return console.error(err);
+	
+	step({ A1 : 0, A2 : 0, B1 : 0, B2 : 0});
   });
 }
 
