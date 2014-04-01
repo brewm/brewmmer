@@ -141,7 +141,6 @@ function step(item, callback) {
   setState(coil_A2_pin, item.A2);
   setState(coil_B1_pin, item.B1);
   setState(coil_B2_pin, item.B2); 
-  console.log(item);
   
   setTimeout(function() { callback(); }, delay);
 }
