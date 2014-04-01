@@ -55,12 +55,12 @@ ask("Delay between steps (milliseconds)", function(delay_){
 	});
   });
 });*/
-var delay = process.argv[2];
+var delay = parseInt(process.argv[2]);
 var mode = process.argv[3];
 var step = parseInt(process.argv[4]);
 
 
-if(type == '1'){
+if(mode == '1'){
   if(steps > 0){
     motor.forward1Phase(steps);
     motor.run(delay);
@@ -69,7 +69,7 @@ if(type == '1'){
     motor.run(delay);
   }
 }
-if(type == '2'){
+if(mode == '2'){
   if(steps > 0){			
     motor.forward2Phase(steps);
     motor.run(delay);
@@ -78,7 +78,7 @@ if(type == '2'){
     motor.run(delay);
   }
 }	
-if(type == 'h'){
+if(mode == 'h'){
   if(steps > 0){			
     motor.forwardHs(steps);
     motor.run(delay);
