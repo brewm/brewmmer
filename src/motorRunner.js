@@ -33,7 +33,7 @@ ask("Delay between steps (milliseconds)", function(delay_){
           motor.backwards1Phase(Math.abs(steps));
           motor.run(delay);
         }
-      })
+	  }
 	  if(type == '2'){
         if(steps > 0){			
 		  motor.forward2Phase(steps);
