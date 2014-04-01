@@ -136,6 +136,7 @@ module.exports.run = function(delay_){
   async.mapLimit(queue, 1, step,  function(err, results){
     if (err) return console.error(err);
 	
+	//Finish: Set every phase to zero
 	step({ A1 : 0, A2 : 0, B1 : 0, B2 : 0});
   });
 }
