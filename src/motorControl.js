@@ -128,7 +128,7 @@ function setStep(w1, w2, w3, w4){
   push(coil_B2_pin, w4); 
 }
 
-function async(arg, callback) {
+function step(arg, callback) {
   setStep(arg.A1, arg.A2, arg.B1, arg.B2)
   setTimeout(function() { callback(); }, delay);
 }
@@ -158,7 +158,7 @@ var delay;
 
 module.exports.run = function(delay_){
   delay = delay_;
-  async.map(queue, async,  function(err, result){
+  async.map(queue, step,  function(err, result){
     if (err) return console.error(err);
   });
 }
