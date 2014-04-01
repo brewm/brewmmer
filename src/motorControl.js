@@ -133,20 +133,19 @@ var delay; //= 20;
 module.exports.run = function(delay_){
   delay = delay_;
   console.log(delay);
-  async.map(queue, step,  function(err, result){
+  
+  async.eachLimit(queue, 1, step,  function(err){
     if (err) return console.error(err);
   });
 }
 
-function step(item, callback) { 
-  setTimeout(function() { 
-    console.log(item);
-    setState(coil_A1_pin, item.A1);
-    setState(coil_A2_pin, item.A2);
-    setState(coil_B1_pin, item.B1);
-    setState(coil_B2_pin, item.B2); 
-    callback(); 
-	}, delay);
+function step(command, callback) { 
+  
+  setState(coil_A1_pin, command.A1);
+  setState(coil_A2_pin, command.A2);
+  setState(coil_B1_pin, command.B1);
+  setState(coil_B2_pin, command.B2); 
+  setTimeout(function() { callback(); }, delay);
 }
 
 function setState(pin, value){
