@@ -54,12 +54,7 @@ ask("Choose mode type: (1) One Phase, (2) Two Phase, (h) Half Step", function(ty
   }	
 });
 
-forward1Phase(steps);
-//run(queue.shift());
-
-async.map(queue, async,  function(err, result){
-  if (err) return console.error(err);
-});
+motor.run(delay);
 
 
 
