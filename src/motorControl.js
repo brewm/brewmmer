@@ -6,6 +6,9 @@ var coil_A2_pin = new Gpio(23, 'out');
 var coil_B1_pin = new Gpio(24, 'out');
 var coil_B2_pin = new Gpio(25, 'out');
 
+/**
+  Queue for commands
+*/
 var queue = [];
 
 /**
@@ -115,46 +118,24 @@ module.exports.backwardsHs = function(steps){
   }
 }
 
-function push(pin, value){
+
+function setState(pin, value){
   pin.write(value, function(err){
     if (err) return console.error(err);
   });
 }
 
-function setStep(w1, w2, w3, w4){
-  push(coil_A1_pin, w1);
-  push(coil_A2_pin, w2);
-  push(coil_B1_pin, w3);
-  push(coil_B2_pin, w4); 
-}
-
-function step(arg, callback) {
-  setStep(arg.A1, arg.A2, arg.B1, arg.B2)
+function step(item, callback) {
+  setState(coil_A1_pin, item.A1);
+  setState(coil_A2_pin, item.A2);
+  setState(coil_B1_pin, item.B1);
+  setState(coil_B2_pin, item.B2); 
+  console.log(item);
+  
   setTimeout(function() { callback(); }, delay);
 }
-/*
-function final() { 
-  coil_A1_pin.unexport();
-  coil_A2_pin.unexport();
-  coil_B1_pin.unexport();
-  coil_B2_pin.unexport();
-  console.log('Done');   
-}
-
-function run(item) {
-  if(item) {
-    async( item, function() {
-      run(queue.shift());
-    });
-  } else {
-    final();
-  }
-}*/
 
 var delay;
-//var steps = 512;
-//forward1Phase(steps);
-//run(queue.shift());
 
 module.exports.run = function(delay_){
   delay = delay_;
