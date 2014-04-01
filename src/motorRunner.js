@@ -1,15 +1,19 @@
 var motor = require('./motorControl.js');
+var readline = require('readline');
+
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
 
 function ask(question, callback) {
- var stdin = process.stdin, stdout = process.stdout;
+  console.log(question + ' ');
  
- stdin.resume();
- stdout.write(question + " ");
- 
- stdin.once('data', function(data) {
-   data = data.toString().trim();
-   callback(data);
- });
+  rl.on('line', function (data) {
+    data = data.toString().trim();
+    callback(data);
+  });
 }
 
 var delay;
