@@ -133,11 +133,6 @@ var delay = 10;
 module.exports.run = function(){
   async.map(queue, step,  function(err, result){
     if (err) return console.error(err);
-	
-	coil_A1_pin.unexport();
-    coil_A2_pin.unexport();
-	coil_B1_pin.unexport();
-	coil_B1_pin.unexport();
   });
 }
 
