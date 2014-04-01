@@ -132,7 +132,7 @@ function async(arg, callback) {
   setStep(arg.A1, arg.A2, arg.B1, arg.B2)
   setTimeout(function() { callback(); }, delay);
 }
-
+/*
 function final() { 
   coil_A1_pin.unexport();
   coil_A2_pin.unexport();
@@ -149,7 +149,7 @@ function run(item) {
   } else {
     final();
   }
-}
+}*/
 
 var delay;
 //var steps = 512;
