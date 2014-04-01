@@ -57,7 +57,7 @@ ask("Delay between steps (milliseconds)", function(delay_){
 });*/
 var delay = parseInt(process.argv[2]);
 var mode = process.argv[3];
-var step = parseInt(process.argv[4]);
+var steps = parseInt(process.argv[4]);
 
 
 if(mode == '1'){
