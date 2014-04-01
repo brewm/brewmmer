@@ -125,24 +125,26 @@ module.exports.backwardsHs = function(steps){
   }
 }
 
-var delay = 20;
+var delay; //= 20;
 
 /**
   Send the prepared commands to the Stepping motor
 */
-module.exports.run = function(){
+module.exports.run = function(delay_){
+  delay = delay_;
   async.map(queue, step,  function(err, result){
     if (err) return console.error(err);
   });
 }
 
-function step(item, callback) {
-  setState(coil_A1_pin, item.A1);
-  setState(coil_A2_pin, item.A2);
-  setState(coil_B1_pin, item.B1);
-  setState(coil_B2_pin, item.B2); 
-  
-  setTimeout(function() { callback(); }, delay);
+function step(item, callback) { 
+  setTimeout(function() { 
+    setState(coil_A1_pin, item.A1);
+    setState(coil_A2_pin, item.A2);
+    setState(coil_B1_pin, item.B1);
+    setState(coil_B2_pin, item.B2); 
+    callback(); 
+	}, delay);
 }
 
 function setState(pin, value){
