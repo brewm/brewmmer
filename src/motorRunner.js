@@ -26,40 +26,31 @@ ask("Delay between steps (milliseconds)", function(delay_){
 
 	ask("Choose mode type: (1) One Phase, (2) Two Phase, (h) Half Step", function(type) {
 	  if(type == '1'){
-		ask("Direction: (f) Forward, (b) Backwards", function(dir){
-		  if(dir == 'f'){
-			motor.forward1Phase(steps);
-			motor.run(delay);
-		  }
-		  if(dir == 'b'){
-			motor.backwards1Phase(steps);
-			motor.run(delay);
-		  }
-		})
-	  }	
-	  if(type == 2){
-		ask("Direction: (f) Forward, (b) Backwards", function(dir){
-		  if(dir == 'f'){
-			motor.forward2Phase(steps);
-			motor.run(delay);
-		  }
-		  if(dir == 'b'){
-			motor.backwards2Phase(steps);
-			motor.run(delay);
-		  }
-		})
+        if(steps > 0){
+          motor.forward1Phase(steps);
+          motor.run(delay);
+	    }else{
+          motor.backwards1Phase(Math.abs(steps));
+          motor.run(delay);
+        }
+      })
+	  if(type == '2'){
+        if(steps > 0){			
+		  motor.forward2Phase(steps);
+          motor.run(delay);
+		}else{
+          motor.backwards2Phase(Math.abs(steps));
+          motor.run(delay);
+        }
 	  }	
 	  if(type == 'h'){
-		ask("Direction: (f) Forward, (b) Backwards", function(dir){
-		  if(dir == 'f'){
-			motor.forwardHs(steps);
-			motor.run(delay);
-		  }
-		  if(dir == 'b'){
-			motor.backwardsHs(steps);
-			motor.run(delay);
-		  }
-		})
+        if(steps > 0){			
+		  motor.forwardHs(steps);
+          motor.run(delay);
+		}else{
+          motor.backwardsHs(Math.abs(steps));
+          motor.run(delay);
+        }
 	  }	
 	});
   });
