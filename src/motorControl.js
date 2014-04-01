@@ -1,4 +1,5 @@
 var Gpio = require('onoff').Gpio;
+var async = require('async');
 
 var coil_A1_pin = new Gpio(18, 'out');
 var coil_A2_pin = new Gpio(23, 'out');
@@ -128,10 +129,8 @@ function setStep(w1, w2, w3, w4){
 }
 
 function async(arg, callback) {
-  setTimeout(function() { 
-    setStep(arg.A1, arg.A2, arg.B1, arg.B2);
-    callback(); 
-  }, delay);
+  setStep(arg.A1, arg.A2, arg.B1, arg.B2)
+  setTimeout(function() { callback(); }, delay);
 }
 
 function final() { 
@@ -152,14 +151,16 @@ function run(item) {
   }
 }
 
-
 var delay = 8;
 var steps = 512;
 
 
 forward1phase(steps);
-run(queue.shift());
+//run(queue.shift());
 
+async.map(queue, async,  function(err, result){
+  if (err) return console.error(err);
+});
 
 
 
