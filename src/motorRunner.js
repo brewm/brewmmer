@@ -1,5 +1,5 @@
 var motor = require('./motorControl.js');
-var readline = require('readline');
+/*var readline = require('readline');
 
 var rl = readline.createInterface({
   input: process.stdin,
@@ -54,10 +54,38 @@ ask("Delay between steps (milliseconds)", function(delay_){
 	  }	
 	});
   });
-});
+});*/
+var delay = process.argv[2];
+var mode = process.argv[3];
+var step = parseInt(process.argv[4]);
 
 
-
-
+if(type == '1'){
+  if(steps > 0){
+    motor.forward1Phase(steps);
+    motor.run(delay);
+  }else{
+    motor.backwards1Phase(Math.abs(steps));
+    motor.run(delay);
+  }
+}
+if(type == '2'){
+  if(steps > 0){			
+    motor.forward2Phase(steps);
+    motor.run(delay);
+  }else{
+    motor.backwards2Phase(Math.abs(steps));
+    motor.run(delay);
+  }
+}	
+if(type == 'h'){
+  if(steps > 0){			
+    motor.forwardHs(steps);
+    motor.run(delay);
+  }else{
+    motor.backwardsHs(Math.abs(steps));
+    motor.run(delay);
+  }
+}	
 
 
