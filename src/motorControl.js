@@ -151,17 +151,17 @@ function run(item) {
   }
 }
 
-var delay = 8;
-var steps = 512;
-
-
-forward1phase(steps);
+var delay;
+//var steps = 512;
+//forward1Phase(steps);
 //run(queue.shift());
 
-async.map(queue, async,  function(err, result){
-  if (err) return console.error(err);
-});
-
+function run(delay_){
+  delay = delay_;
+  async.map(queue, async,  function(err, result){
+    if (err) return console.error(err);
+  });
+}
 
 
 
