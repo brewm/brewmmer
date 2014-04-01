@@ -4,7 +4,7 @@ function ask(question, callback) {
  var stdin = process.stdin, stdout = process.stdout;
  
  stdin.resume();
- stdout.write(question + "? ");
+ stdout.write(question + " ");
  
  stdin.once('data', function(data) {
    data = data.toString().trim();
@@ -14,12 +14,12 @@ function ask(question, callback) {
 
 var delay;
 var steps;
-ask("Delay between steps (milliseconds)?", function(delay_){
+ask("Delay between steps (milliseconds)", function(delay_){
 	delay = delay_;
-}
+});
 ask("How many steps?", function(steps_){
 	steps = steps_;
-}
+});
 
 ask("Choose mode type: (1) One Phase, (2) Two Phase, (h) Half Step", function(type) {
   if(type == 1){
