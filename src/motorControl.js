@@ -132,6 +132,7 @@ var delay; //= 20;
 */
 module.exports.run = function(delay_){
   delay = delay_;
+  console.log(delay);
   async.map(queue, step,  function(err, result){
     if (err) return console.error(err);
   });
@@ -139,6 +140,7 @@ module.exports.run = function(delay_){
 
 function step(item, callback) { 
   setTimeout(function() { 
+    console.log(item);
     setState(coil_A1_pin, item.A1);
     setState(coil_A2_pin, item.A2);
     setState(coil_B1_pin, item.B1);
