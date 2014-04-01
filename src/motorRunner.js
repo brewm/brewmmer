@@ -29,9 +29,11 @@ ask("Delay between steps (milliseconds)", function(delay_){
 		ask("Direction: (f) Forward, (b) Backwards", function(dir){
 		  if(dir == 'f'){
 			motor.forward1Phase(steps);
+			motor.run(delay);
 		  }
 		  if(dir == 'b'){
 			motor.backwards1Phase(steps);
+			motor.run(delay);
 		  }
 		})
 	  }	
@@ -39,9 +41,11 @@ ask("Delay between steps (milliseconds)", function(delay_){
 		ask("Direction: (f) Forward, (b) Backwards", function(dir){
 		  if(dir == 'f'){
 			motor.forward2Phase(steps);
+			motor.run(delay);
 		  }
 		  if(dir == 'b'){
 			motor.backwards2Phase(steps);
+			motor.run(delay);
 		  }
 		})
 	  }	
@@ -49,15 +53,15 @@ ask("Delay between steps (milliseconds)", function(delay_){
 		ask("Direction: (f) Forward, (b) Backwards", function(dir){
 		  if(dir == 'f'){
 			motor.forwardHs(steps);
+			motor.run(delay);
 		  }
 		  if(dir == 'b'){
 			motor.backwardsHs(steps);
+			motor.run(delay);
 		  }
 		})
 	  }	
 	});
-  motor.run(delay);
-  rl.close();
   });
 });
 
