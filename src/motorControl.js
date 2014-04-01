@@ -125,14 +125,13 @@ module.exports.backwardsHs = function(steps){
   }
 }
 
-var delay; //= 20;
+var delay;
 
 /**
   Send the prepared commands to the Stepping motor
 */
 module.exports.run = function(delay_){
   delay = delay_;
-  console.log(delay);
   
   async.eachLimit(queue, 1, step,  function(err){
     if (err) return console.error(err);
@@ -140,12 +139,11 @@ module.exports.run = function(delay_){
 }
 
 function step(command, callback) { 
-  
   setState(coil_A1_pin, command.A1);
   setState(coil_A2_pin, command.A2);
   setState(coil_B1_pin, command.B1);
   setState(coil_B2_pin, command.B2); 
-  setTimeout(function() { callback(); }, delay);
+  setTimeout(callback, delay);
 }
 
 function setState(pin, value){

@@ -1,8 +1,8 @@
 var motor = require('./motorControl.js');
 
-var mode = process.argv[2];
-var steps = parseInt(process.argv[3]);
-var delay = parseInt(process.argv[4]);
+var delay = parseInt(process.argv[2]);
+var mode = process.argv[3];
+var steps = parseInt(process.argv[4]);
 
 if(mode == '1'){
   if(steps > 0){
