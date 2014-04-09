@@ -109,7 +109,7 @@ module.exports.forwardHs = function(steps){
  *  torque (approx 70%) at the half step position (where only a single phase is on). 
  *  This may be mitigated by increasing the current in the active winding to compensate. 
  *  The advantage of half stepping is that the drive electronics need not change to support it.
- *  Direction: Backward
+ *  Direction: Backwards
  *  @param {Number} steps
  */
 module.exports.backwardsHs = function(steps){
