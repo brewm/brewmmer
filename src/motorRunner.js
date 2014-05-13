@@ -1,3 +1,6 @@
+/* jslint node: true */
+'use strict';
+
 var motor = require('./motorControl.js');
 
 var delay = parseInt(process.argv[2]);
@@ -12,14 +15,14 @@ if(mode == '1'){
   }
 }
 if(mode == '2'){
-  if(steps > 0){			
+  if(steps > 0){
     motor.forward2Phase(steps);
   }else{
     motor.backwards2Phase(Math.abs(steps));
   }
-}	
+}
 if(mode == 'h'){
-  if(steps > 0){			
+  if(steps > 0){
     motor.forwardHs(steps);
   }else{
     motor.backwardsHs(Math.abs(steps));
