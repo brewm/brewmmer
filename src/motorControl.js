@@ -15,6 +15,8 @@ var coil_B2_pin = new Gpio(25, 'out');
 */
 var queue = [];
 
+var delay;
+
 /**
  *  Mode: Wave Drive (one phase on)
  *  Description: In this drive method only a single phase is activated at a time.
@@ -128,7 +130,6 @@ module.exports.backwardsHs = function(steps){
   }
 };
 
-var delay;
 
 /**
   Send the prepared commands to the Stepping motor

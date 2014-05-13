@@ -45,10 +45,14 @@ function getTemperatures(req, res, next){
     function(err, rows){
       if(err) return next(new restify.InternalError('Can\'t read temperature log!'));
 
-      var records = {records:rows};
+      var records = {
+        records: rows
+      };
+
       records.records.sort(function(a, b) {
         return a.timestamp - b.timestamp;
       });
+
       res.send(records);
       return next();
     });

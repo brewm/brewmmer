@@ -5,7 +5,7 @@ var fs = require('fs');
 
 var exports = module.exports = {};
 
-exports.get = function (callback){
+exports.get = function(callback){
   fs.readFile('/sys/bus/w1/devices/28-0000051e015b/w1_slave', function(err, buffer){
     if(err) return callback(err);
 
