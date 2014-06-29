@@ -6,7 +6,7 @@ var temperature = require('./temperature.js');
 
 var db = new sqlite3.Database('./brewmmer.db');
 
-var msecs = (60*15) * 1000;
+var msecs = 250;//(60*15) * 1000;
 
 function storeTemperature(err, record){
   if(err) return console.error(err);
