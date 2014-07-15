@@ -1,19 +1,34 @@
 /* jslint node: true */
 'use strict';
 
-var sqlite3 = require('sqlite3');
+var fs = require('fs');
+var mongoose = require('mongoose');
+
 var temperature = require('./temperature.js');
 
-var db = new sqlite3.Database('./brewmmer.db');
+mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
+var Measurement = require('../models/measurement').Measurement;
 
-var msecs = (60*15) * 1000;
+var msecs;
+
+//Get config file
+var configFile = fs.readFileSync('../config.json');
+var config = {};
+try {
+  config = JSON.parse(configFile);
+  msecs = config.logging_interval * 1000;
+
+} catch (err) {
+  console.log('There has been an error parsing your JSON.');
+  console.log(err);
+}
+
 
 function storeTemperature(err, record){
   if(err) return console.error(err);
 
-  var statement = db.prepare('INSERT INTO temperature_log VALUES (?, ?)');
-  statement.run(record.timestamp, record.temperature);
-  statement.finalize();
+  var measurement = new Measurement({ temperature: record.temperature, timestamp: record.timestamp });
+  measurement.save();
 }
 
 function logTemperature(interval){

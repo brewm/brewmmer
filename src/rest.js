@@ -2,14 +2,16 @@
 'use strict';
 
 var restify = require('restify');
-var sqlite3 = require('sqlite3');
+var mongoose = require('mongoose');
+
 var temperature = require('./temperature.js');
 
-var db = new sqlite3.Database('./brewmmer.db');
+mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
+var Measurement = require('./models/measurement').Measurement;
 
 var server = restify.createServer({
   name: 'brewmmer',
-  version: '1.0.0'
+  version: '2.0.0'
 });
 
 server
@@ -41,12 +43,14 @@ function getTemperature(req, res, next){
 }
 
 function getTemperatures(req, res, next){
-  db.all('SELECT * FROM temperature_log ORDER BY timestamp DESC LIMIT ?;', req.params.limit,
-    function(err, rows){
+  var query = Measurement.find({}, {'timestamp': 1, 'temperature': 1, '_id': 0}).sort({'timestamp': -1 }).limit(req.params.limit);
+
+  query.exec(
+    function(err, measurements) {
       if(err) return next(new restify.InternalError('Can\'t read temperature log!'));
 
       var records = {
-        records: rows
+        records: measurements
       };
 
       records.records.sort(function(a, b) {
@@ -55,5 +59,5 @@ function getTemperatures(req, res, next){
 
       res.send(records);
       return next();
-    });
+  });
 }
