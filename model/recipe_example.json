@@ -1,5 +1,16 @@
 {
+  "name": "Amber Cub",
   "ingredients": {
+    "water": [
+      {
+        "name": "initial",
+        "volume": "20"
+      },
+      {
+        "name": "sparge",
+        "volume": "10"
+      }
+    ],
     "malts": [
       {
         "name": "crystal",
@@ -8,7 +19,7 @@
       {
         "name": "pale ale",
         "weight": "2"
-      },
+      }
     ],
     "hops": [
       {
@@ -27,26 +38,32 @@
   },
   "mash_steps": [
     {
-      "temperature": "54", 
-      "time": "45"
+      "temperature": "54",
+      "interval": "45"
     },
     {
-      "temperature": "66", 
-      "time": "35"
+      "temperature": "66",
+      "interval": "35"
     },
     {
-      "temperature": "74", 
-      "time": "40"
+      "temperature": "74",
+      "interval": "40"
     }
   ],
   "hop_steps": [
     {
       "hop": "magnum",
-      "time": "60" 
+      "interval": "60"
     },
     {
       "hop": "citra",
-      "time": "10" 
+      "interval": "10"
     }
-  ]
+  ],
+  "extras": [
+    {
+      "name": "cherry"
+    }
+  ],
+  "evaluation": "lol it was cool"
 }
