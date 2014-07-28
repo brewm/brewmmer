@@ -1,0 +1,52 @@
+{
+  "ingredients": {
+    "malts": [
+      {
+        "name": "crystal",
+        "weight": "3"
+      },
+      {
+        "name": "pale ale",
+        "weight": "2"
+      },
+    ],
+    "hops": [
+      {
+        "name": "magnum",
+        "weight": "60"
+      },
+      {
+        "name": "citra",
+        "weight": "30"
+      }
+    ],
+    "yeast": {
+        "name": "US-50",
+        "weight": "11"
+    }
+  },
+  "mash_steps": [
+    {
+      "temperature": "54", 
+      "time": "45"
+    },
+    {
+      "temperature": "66", 
+      "time": "35"
+    },
+    {
+      "temperature": "74", 
+      "time": "40"
+    }
+  ],
+  "hop_steps": [
+    {
+      "hop": "magnum",
+      "time": "60" 
+    },
+    {
+      "hop": "citra",
+      "time": "10" 
+    }
+  ]
+}
