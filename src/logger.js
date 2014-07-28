@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var temperature = require('./temperature.js');
 
 mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
-var Measurement = require('../models/measurement').Measurement;
+var Measurement = require('./models/measurement').Measurement;
 
 var msecs;
 
