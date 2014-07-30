@@ -1,69 +1,86 @@
 {
-  "name": "Amber Cub",
+  "name": "Amber Cub IPA",
+  "type": "IPA",
   "ingredients": {
     "water": [
       {
         "name": "initial",
-        "volume": "20"
+        "volume": "12"
       },
       {
         "name": "sparge",
-        "volume": "10"
+        "volume": "13"
       }
     ],
     "malts": [
       {
-        "name": "crystal",
-        "weight": "3"
+        "name": "Pale Ale",
+        "weight": "3.5"
       },
       {
-        "name": "pale ale",
-        "weight": "2"
+        "name": "Crystal",
+        "weight": "0.75"
       }
     ],
     "hops": [
       {
-        "name": "magnum",
-        "weight": "60"
+        "name": "Tomahawk",
+        "weight": "30"
       },
       {
-        "name": "citra",
-        "weight": "30"
+        "name": "Centennial",
+        "weight": "100"
       }
     ],
     "yeast": {
-        "name": "US-50",
+        "name": "Safale US-50",
         "weight": "11"
     }
   },
   "mash_steps": [
     {
-      "temperature": "54",
-      "interval": "45"
+      "temperature": "52",
+      "interval": "20"
     },
     {
       "temperature": "66",
-      "interval": "35"
+      "interval": "45"
     },
     {
-      "temperature": "74",
-      "interval": "40"
+      "temperature": "68",
+      "interval": "45"
     }
   ],
   "hop_steps": [
     {
-      "hop": "magnum",
+      "hop": "Tomahawk",
+      "weight": "30",
+      "phase": "boil",
       "interval": "60"
     },
     {
-      "hop": "citra",
+      "hop": "Centennial",
+      "weight": "30",
+      "phase": "boil",
       "interval": "10"
+    },
+    {
+      "hop": "Centennial",
+      "weight": "30",
+      "phase": "boil",
+      "interval": "0"
+    },
+    {
+      "hop": "Centennial",
+      "weight": "40",
+      "phase": "dryhop",
+      "interval": "0"
     }
   ],
   "extras": [
     {
-      "name": "cherry"
+      "name": "nope"
     }
   ],
-  "evaluation": "lol it was cool"
+  "evaluation": "not yet"
 }
