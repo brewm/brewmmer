@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 
 var RecipeSchema = new mongoose.Schema({
   name:           { type: String, required: true },
+  type:           { type: String, required: true },
   ingredients: {
   	water: [{
       name:       { type: String, required: true },
@@ -29,6 +30,8 @@ var RecipeSchema = new mongoose.Schema({
   }],
   hop_steps: [{
     hop:          { type: String, required:true },
+    wieght:       { type: String, required:true },
+    phase:        { type: String, required:true },
     interval:     { type: Number, required:true },
   }],
   extras: [{
