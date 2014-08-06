@@ -1,3 +1,4 @@
 brewmmer.sublime-workspace
 src/node_modules
 node_modules
+.DS_Store
