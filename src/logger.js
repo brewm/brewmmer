@@ -18,8 +18,8 @@ function storeTemperature(err, record){
 
 function logTemperature(interval){
   temperature.get(storeTemperature);
-  // Set the repeat interval (milliseconds). Third argument is passed as callback function to first (i.e. readTemp(storeTemperature)).
-  setInterval(temperature.get, interval, storeTemperature);
+  // Set the repeat interval (seconds). Third argument is passed as callback function to first (i.e. readTemp(storeTemperature)).
+  setInterval(temperature.get, interval * 1000, storeTemperature);
 }
 
 //Run
