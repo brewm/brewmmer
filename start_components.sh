@@ -1,10 +1,9 @@
 #!/bin/bash
 #
-# Run this script after restart 
+# Run this script after restart
 
-forever start ./src/rest.js 
-cd src;
-forever start ./logger.js
+forever start ./src/rest.js
+forever start ./src/logger.js
 #forever start ./src/http_server.js
 
 exit 0
