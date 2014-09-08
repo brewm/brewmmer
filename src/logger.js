@@ -9,20 +9,6 @@ var temperature = require('./temperature.js');
 mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
 var Measurement = require('./models/measurement').Measurement;
 
-var msecs;
-
-//Get config file
-var configFile = fs.readFileSync('../config.json');
-var config = {};
-try {
-  config = JSON.parse(configFile);
-  msecs = config.logging_interval * 1000;
-
-} catch (err) {
-  console.log('There has been an error parsing your JSON.');
-  console.log(err);
-}
-
 function storeTemperature(err, record){
   if(err) return console.error(err);
 
@@ -37,4 +23,4 @@ function logTemperature(interval){
 }
 
 //Run
-logTemperature(msecs);
+logTemperature(process.env['LOG_INTERVAL']);
