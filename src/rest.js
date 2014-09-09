@@ -24,6 +24,8 @@ server.get('test', ok);
 server.get('temperature', getTemperature);
 server.get('temperatures/:limit', getTemperatures);
 server.get('recipes', getRecipes);
+server.get('recipe/:name', getRecipe);
+
 
 server.listen(3551, function() {
   console.log('%s listening at %s', server.name, server.url);
@@ -76,6 +78,18 @@ function getRecipes(req, res, next){
       };
 
       res.send(records);
+      return next();
+  });
+}
+
+function getRecipe(req, res, next){
+  var query = Recipe.findOne({name: req.params.name});
+
+  query.exec(
+    function(err, recipe) {
+      if(err) return next(new restify.InternalError('Can\'t read recipe collection!'));
+
+      res.send(recipe);
       return next();
   });
 }
