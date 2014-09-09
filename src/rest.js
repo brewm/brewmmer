@@ -8,6 +8,7 @@ var temperature = require('./temperature.js');
 
 mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
 var Measurement = require('./models/measurement').Measurement;
+var Recipe = require('./models/recipe').Recipe;
 
 var server = restify.createServer({
   name: 'brewmmer',
@@ -22,6 +23,7 @@ server
 server.get('test', ok);
 server.get('temperature', getTemperature);
 server.get('temperatures/:limit', getTemperatures);
+server.get('recipes', getRecipes);
 
 server.listen(3551, function() {
   console.log('%s listening at %s', server.name, server.url);
@@ -56,6 +58,22 @@ function getTemperatures(req, res, next){
       records.records.sort(function(a, b) {
         return a.timestamp - b.timestamp;
       });
+
+      res.send(records);
+      return next();
+  });
+}
+
+function getRecipes(req, res, next){
+  var query = Recipe.find({}, {'name': 1, 'type': 1, '_id': 0});
+
+  query.exec(
+    function(err, recipes) {
+      if(err) return next(new restify.InternalError('Can\'t read recipe collection!'));
+
+      var records = {
+        records: recipes
+      };
 
       res.send(records);
       return next();
