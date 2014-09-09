@@ -25,6 +25,7 @@ server.get('temperature', getTemperature);
 server.get('temperatures/:limit', getTemperatures);
 server.get('recipes', getRecipes);
 server.get('recipe/:name', getRecipe);
+server.get('recipetypes', getRecipeTypes);
 
 
 server.listen(3551, function() {
@@ -92,4 +93,26 @@ function getRecipe(req, res, next){
       res.send(recipe);
       return next();
   });
+}
+
+function getRecipeTypes(req, res, next){
+  var query = Recipe.find({}, {'type': 1, '_id': 0});
+
+  query.exec(
+    function(err, recipetypes) {
+      if(err) return next(new restify.InternalError('Can\'t read recipe collection!'));
+
+      var temp = recipetypes.map(function(type){
+        return type.type;
+      });
+
+      res.send(uniq(temp));
+      return next();
+  });
+
+  function uniq(array) {
+    return array.sort().filter(function(item, pos) {
+        return !pos || item != array[pos - 1];
+    });
+  }
 }
