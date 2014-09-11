@@ -36,6 +36,7 @@ router.get('/', function(req, res) {
 // REGISTER THE CONTROLLERS  -------------------------
 require('./contollers/recipes')(router);
 require('./contollers/measurements')(router);
+require('./contollers/temperature')(router);
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
