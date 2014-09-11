@@ -2,7 +2,7 @@
   "name": "brewmmer",
   "version": "0.2.0",
   "description": "========",
-  "main": "index.js",
+  "main": "app/app.js",
   "dependencies": {
     "body-parser": "^1.8.1",
     "express": "^4.9.0",
