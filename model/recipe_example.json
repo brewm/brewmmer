@@ -5,76 +5,76 @@
     "water": [
       {
         "name": "initial",
-        "volume": "12"
+        "volume": 12
       },
       {
         "name": "sparge",
-        "volume": "13"
+        "volume": 13
       }
     ],
     "malts": [
       {
         "name": "Pale Ale",
-        "weight": "3.5"
+        "weight": 3.5
       },
       {
         "name": "Crystal",
-        "weight": "0.75"
+        "weight": 0.75
       }
     ],
     "hops": [
       {
         "name": "Tomahawk",
-        "weight": "30"
+        "weight": 30
       },
       {
         "name": "Centennial",
-        "weight": "100"
+        "weight": 100
       }
     ],
     "yeast": {
         "name": "Safale US-50",
-        "weight": "11"
+        "weight": 11
     }
   },
   "mash_steps": [
     {
-      "temperature": "52",
-      "interval": "20"
+      "temperature": 52,
+      "interval": 20
     },
     {
-      "temperature": "66",
-      "interval": "45"
+      "temperature": 66,
+      "interval": 45
     },
     {
-      "temperature": "68",
-      "interval": "45"
+      "temperature": 68,
+      "interval": 45
     }
   ],
   "hop_steps": [
     {
       "hop": "Tomahawk",
-      "weight": "30",
+      "weight": 30,
       "phase": "boil",
-      "interval": "60"
+      "interval": 60
     },
     {
       "hop": "Centennial",
-      "weight": "30",
+      "weight": 30,
       "phase": "boil",
-      "interval": "10"
+      "interval": 10
     },
     {
       "hop": "Centennial",
-      "weight": "30",
+      "weight": 30,
       "phase": "boil",
-      "interval": "0"
+      "interval": 0
     },
     {
       "hop": "Centennial",
-      "weight": "40",
+      "weight": 40,
       "phase": "dryhop",
-      "interval": "0"
+      "interval": 0
     }
   ],
   "extras": [
