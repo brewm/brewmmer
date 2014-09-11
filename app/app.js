@@ -34,7 +34,7 @@ router.get('/', function(req, res) {
 });
 
 // REGISTER THE CONTROLLERS  -------------------------
-require('./contollers/recipe')(router);
+require('./contollers/recipes')(router);
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
