@@ -2,6 +2,7 @@
 #
 # Run this script after restart
 
+export LOG_INTERVAL=15
 PROJECT_ROOT=`dirname $0`
 
 forever start $PROJECT_ROOT/src/rest.js
