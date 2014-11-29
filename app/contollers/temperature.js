@@ -14,7 +14,7 @@ module.exports = function(router) {
 
       Temperature.get(function(err, data){
         if (err)
-          res.send(err);
+          return res.send(err);
 
         res.json(data);
       });

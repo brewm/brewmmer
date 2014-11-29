@@ -13,7 +13,7 @@ module.exports = function(router) {
     .get(function(req, res) {
       Recipe.distinct('type', function(err, recipe_types) {
         if (err)
-          res.send(err);
+          return res.send(err);
 
         res.json(recipe_types);
       });

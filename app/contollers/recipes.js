@@ -15,7 +15,7 @@ module.exports = function(router) {
 
       recipe.save(function(err) {
         if (err)
-          res.send(err);
+          return res.send(err);
 
         res.json({ message: 'Recipe created!' });
       });
@@ -39,7 +39,7 @@ module.exports = function(router) {
     .get(function(req, res) {
       Recipe.findById(req.params.recipe_id, function(err, recipe) {
         if (err)
-          res.send(err);
+          return res.send(err);
         res.json(recipe);
       });
     })
@@ -49,7 +49,7 @@ module.exports = function(router) {
       Recipe.findByIdAndUpdate(req.params.recipe_id, req.body,
         function(err) {
           if (err)
-            res.send(err);
+            return res.send(err);
 
           res.json({ message: 'Recipe updated!' });
         }
@@ -62,7 +62,7 @@ module.exports = function(router) {
         _id: req.params.recipe_id
       }, function(err) {
         if (err)
-          res.send(err);
+          return res.send(err);
 
         res.json({ message: 'Successfully deleted' });
       });

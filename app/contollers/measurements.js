@@ -14,7 +14,7 @@ module.exports = function(router) {
       var query = Measurement.find().select({'timestamp': 1, 'temperature': 1, '_id': 0}).limit( req.query.limit );
       query.exec( function(err, measurements) {
         if (err)
-          res.send(err);
+          return res.send(err);
 
         res.json(measurements);
       });
