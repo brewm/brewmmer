@@ -9,7 +9,7 @@ module.exports = function(router) {
   // ----------------------------------------------------
   router.route('/recipes')
 
-    // create a recipe (accessed at POST http://localhost:<PORT>/recipes)
+    // create a recipe
     .post(function(req, res) {
       var recipe = new Recipe(req.body);
 
@@ -21,7 +21,7 @@ module.exports = function(router) {
       });
     })
 
-    // get all the recipes (accessed at GET http://localhost:<PORT>/api/recipes)
+    // get all the recipes
     .get(function(req, res) {
       Recipe.find(function(err, recipes) {
         if (err)
