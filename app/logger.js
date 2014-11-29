@@ -1,13 +1,14 @@
 /* jslint node: true */
 'use strict';
 
-var fs = require('fs');
-var mongoose = require('mongoose');
+// // get config
+// var db = require('../config/db');
 
-var temperature = require('./temperature.js');
+// var mongoose = require('mongoose');
+// mongoose.connect(db.url);
 
-mongoose.connect('mongodb://admin:br3wmm3r@kahana.mongohq.com:10037/brewmmer');
-var Measurement = require('./models/measurement').Measurement;
+var Measurement = require('./models/measurement');
+var Temperature = require('./temperature.js');
 
 function storeTemperature(err, record){
   if(err) return console.error(err);
@@ -16,11 +17,15 @@ function storeTemperature(err, record){
   measurement.save();
 }
 
-function logTemperature(interval){
-  temperature.get(storeTemperature);
-  // Set the repeat interval (seconds). Third argument is passed as callback function to first (i.e. readTemp(storeTemperature)).
-  setInterval(temperature.get, interval * 1000, storeTemperature);
+//export functionality
+var timer = 0;
+
+var exports = module.exports = {};
+
+exports.start = function(interval){
+  timer = setInterval(Temperature.get, interval * 1000, storeTemperature);
 }
 
-//Run
-logTemperature(process.env['LOG_INTERVAL']);
+exports.stop = function(){
+  clearInterval(timer);
+}

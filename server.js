@@ -37,10 +37,11 @@ router.get('/', function(req, res) {
 });
 
 // REGISTER THE CONTROLLERS  -------------------------
-require('./app/contollers/recipes')(router);
 require('./app/contollers/measurements')(router);
-require('./app/contollers/temperature')(router);
 require('./app/contollers/recipe_types')(router);
+require('./app/contollers/recipes')(router);
+require('./app/contollers/services')(router);
+require('./app/contollers/temperature')(router);
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
