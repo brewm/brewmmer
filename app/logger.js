@@ -12,9 +12,6 @@ var Measurement = require('./models/measurement').Measurement;
 function storeTemperature(err, record){
   if(err) return console.error(err);
 
-  // FOR TESTING PURPOSES
-  record.temperature += Math.floor((Math.random() - 0.5) * 10);
-
   var measurement = new Measurement({ temperature: record.temperature, timestamp: record.timestamp });
   measurement.save();
 }
