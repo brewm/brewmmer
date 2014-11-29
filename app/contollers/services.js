@@ -1,7 +1,7 @@
 /* jslint node: true */
 'use strict';
 
-var Logger = require('../logger.js');
+var Logger = require('../services/logger.js');
 var Event  = require('../models/event.js');
 
 function recordEvent(service, action, res){

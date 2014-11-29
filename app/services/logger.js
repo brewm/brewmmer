@@ -1,14 +1,8 @@
 /* jslint node: true */
 'use strict';
 
-// // get config
-// var db = require('../config/db');
-
-// var mongoose = require('mongoose');
-// mongoose.connect(db.url);
-
-var Measurement = require('./models/measurement');
-var Temperature = require('./temperature.js');
+var Measurement = require('../models/measurement');
+var Temperature = require('../temperature.js');
 
 function storeTemperature(err, record){
   if(err) return console.error(err);
@@ -17,7 +11,7 @@ function storeTemperature(err, record){
   measurement.save();
 }
 
-//export functionality
+// export functionality
 var timer = 0;
 
 var exports = module.exports = {};
