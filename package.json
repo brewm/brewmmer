@@ -1,13 +1,12 @@
 {
   "name": "brewmmer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "========",
-  "main": "app/app.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.8.1",
     "express": "^4.9.0",
-    "mongoose": "^3.8.16",
-    "restify": "^2.8.2"
+    "mongoose": "^3.8.16"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
