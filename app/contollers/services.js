@@ -23,7 +23,7 @@ module.exports = function(router) {
 
     // manage logger
     .put(function(req, res) {
-      var action  = req.query.action;
+      var action = req.param('action');
 
       switch(action) {
         case 'start':
@@ -50,11 +50,12 @@ module.exports = function(router) {
 
     // manage masher
     .put(function(req, res) {
-      var action  = req.query.action;
+      var action    = req.param('action');
+      var recipe_id = req.param('recipe_id');
 
       switch(action) {
         case 'init':
-          Masher.init(req.query.recipe_id, res.json.bind(res));
+          Masher.init(recipe_id, res.json.bind(res));
           break;
         case 'start':
           Masher.start(res.json.bind(res));
@@ -66,7 +67,7 @@ module.exports = function(router) {
           Masher.status(res.json.bind(res));
           break;
         default:
-          res.json({ error: 'Invalid action for ' + service + '!' });
+          res.json({ error: 'Invalid action for ' + 'masher' + '!' });
       }
     });
 };
