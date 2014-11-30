@@ -30,6 +30,9 @@ exports.init = function(recipe_id, callback) {
     if (err)
       return callback({ error: err });
 
+    if (!recipe)
+      return callback({ error: 'Can\'t find recipe with id: \'' + recipe_id + '\'' });
+
     steps = recipe.mash_steps;
     lock = false;
     callback({ message: 'Recipe successfully loaded!', steps: steps });
