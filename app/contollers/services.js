@@ -1,8 +1,9 @@
 /* jslint node: true */
 'use strict';
 
-var Logger = require('../services/logger.js');
 var Event  = require('../models/event.js');
+var Logger = require('../services/logger.js');
+var Masher = require('../services/masher.js');
 
 function recordEvent(service, action, res){
   var event = new Event({service: service, action: action, timestamp: new Date()});
@@ -42,7 +43,25 @@ module.exports = function(router) {
               Logger.start(10);
               break;
             default:
-              res.json({ error: 'Invalid action!' });
+              res.json({ error: 'Invalid action for ' + service + '!' });
+          }
+          break;
+        case 'masher':
+          switch(action) {
+            case 'init':
+              Masher.init(req.query.recipe_id, res.json.bind(res));
+              break;
+            case 'start':
+              Masher.start(res.json.bind(res));
+              break;
+            case 'stop':
+              Masher.stop(res.json.bind(res));
+              break;
+            case 'status':
+              Masher.status(res.json.bind(res));
+              break;
+            default:
+              res.json({ error: 'Invalid action for ' + service + '!' });
           }
           break;
         default:

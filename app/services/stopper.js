@@ -34,10 +34,12 @@ module.exports = function() {
   };
 
   this.stop = function() {
+    schedule = [];
     clearInterval(timer);
   };
 
   this.reset = function() {
+    schedule = [];
     startTime = Date.now();
   };
 
