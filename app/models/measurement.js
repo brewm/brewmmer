@@ -8,8 +8,4 @@ var MeasurementSchema = new mongoose.Schema({
   timestamp     : { type: Date, required: true }
 });
 
-var Measurement = mongoose.model('Measurement', MeasurementSchema);
-
-module.exports = {
-  Measurement: Measurement
-};
+module.exports = mongoose.model('Measurement', MeasurementSchema);

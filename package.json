@@ -1,0 +1,24 @@
+{
+  "name": "brewmmer",
+  "version": "0.3.0",
+  "description": "========",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.8.1",
+    "express": "^4.9.0",
+    "mongoose": "^3.8.16"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brewm/brewmmer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brewm/brewmmer/issues"
+  },
+  "homepage": "https://github.com/brewm/brewmmer"
+}
