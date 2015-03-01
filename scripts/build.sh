@@ -1,3 +1,5 @@
 #!/bin/bash -e
 
-sudo docker build --rm=true --tag="brewm/brewmmer" ./
+ROOT=$(dirname $0)
+
+sudo docker build --rm=true --tag="brewm/brewmmer" $ROOT/
