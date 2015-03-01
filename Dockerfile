@@ -13,4 +13,4 @@ ADD . /opt/app
 
 EXPOSE 3553 3554 3555
 
-CMD ['node', 'server.js']
+CMD ["nodejs", "server.js"]
