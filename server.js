@@ -13,7 +13,7 @@ var db = require('./config/db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 3555; // set our port
+var port     = process.env.PORT || 3554; // set our port
 
 var mongoose = require('mongoose');
 mongoose.connect(db.url);
