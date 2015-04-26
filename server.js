@@ -41,7 +41,6 @@ require('./app/controllers/measurements')(router);
 require('./app/controllers/recipe_types')(router);
 require('./app/controllers/recipes')(router);
 require('./app/controllers/services')(router);
-require('./app/controllers/temperature')(router);
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
