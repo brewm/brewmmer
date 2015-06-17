@@ -2,7 +2,7 @@
 'use strict';
 
 var Measurement = require('../models/measurement');
-var Temperature = require('../temperature.js');
+var Temperature = require('./agent/temperature.js');
 
 function storeTemperature(err, record){
   if(err) return console.error(err);
