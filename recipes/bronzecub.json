@@ -1,0 +1,90 @@
+{
+  name: "Little Cub IPA - Bronze Cub",
+  type: "IPA",
+  ingredients: {
+    water: [
+      {
+        name: "initial",
+        volume: "32"
+      },
+      {
+        name: "sparge",
+        volume: "25"
+      }
+    ],
+    malts: [
+      {
+        name: "Pale Ale",
+        weight: "8"
+      },
+      {
+        name: "Crystal",
+        weight: "1.5"
+      }
+    ],
+    hops: [
+      {
+        name: "Tomahawk",
+        weight: "75"
+      },
+      {
+        name: "Cascade",
+        weight: "80"
+      },
+      {
+        name: "Citra",
+        weight: "170"
+      }
+    ],
+    yeast: {
+      name: "Safale US-05",
+      weight: "20"
+    }
+  },
+  mash_steps: [
+    {
+      temperature: "55",
+      interval: "30"
+    },
+    {
+      temperature: "65",
+      interval: "45"
+    },
+    {
+      temperature: "78",
+      interval: "45"
+    }
+  ],
+  hop_steps: [
+    {
+      hop: "Tomahawk",
+      weight: "75",
+      phase: "boil",
+      interval: "60"
+    },
+    {
+      hop: "Cascade",
+      weight: "80",
+      phase: "boil",
+      interval: "10"
+    },
+    {
+      hop: "Citra",
+      weight: "75",
+      phase: "boil",
+      interval: "0"
+    },
+    {
+      hop: "Citra",
+      weight: "95",
+      phase: "dryhop",
+      interval: "0"
+    }
+  ],
+  extras: [
+    {
+      name: "nope"
+    }
+  ],
+  evaluation: "not yet"
+}
