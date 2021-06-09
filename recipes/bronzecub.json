@@ -1,90 +1,90 @@
 {
-  name: "Little Cub IPA - Bronze Cub",
-  type: "IPA",
-  ingredients: {
-    water: [
+  "name": "Little Cub IPA - Bronze Cub",
+  "type": "IPA",
+  "ingredients": {
+    "water": [
       {
-        name: "initial",
-        volume: "32"
+        "name": "initial",
+        "volume": 32
       },
       {
-        name: "sparge",
-        volume: "25"
+        "name": "sparge",
+        "volume": 25
       }
     ],
-    malts: [
+    "malts": [
       {
-        name: "Pale Ale",
-        weight: "8"
+        "name": "Pale Ale",
+        "weight": 8
       },
       {
-        name: "Crystal",
-        weight: "1.5"
+        "name": "Crystal",
+        "weight": 1.5
       }
     ],
-    hops: [
+    "hops": [
       {
-        name: "Tomahawk",
-        weight: "75"
+        "name": "Tomahawk",
+        "weight": 0.075
       },
       {
-        name: "Cascade",
-        weight: "80"
+        "name": "Cascade",
+        "weight": 0.08
       },
       {
-        name: "Citra",
-        weight: "170"
+        "name": "Citra",
+        "weight": 0.17
       }
     ],
-    yeast: {
-      name: "Safale US-05",
-      weight: "20"
+    "yeast": {
+      "name": "Safale US-05",
+      "weight": 0.02
     }
   },
-  mash_steps: [
+  "mash_steps": [
     {
-      temperature: "55",
-      interval: "30"
+      "temperature": 55,
+      "interval": 30
     },
     {
-      temperature: "65",
-      interval: "45"
+      "temperature": 65,
+      "interval": 45
     },
     {
-      temperature: "78",
-      interval: "45"
+      "temperature": 78,
+      "interval": 45
     }
   ],
-  hop_steps: [
+  "hop_steps": [
     {
-      hop: "Tomahawk",
-      weight: "75",
-      phase: "boil",
-      interval: "60"
+      "hop": "Tomahawk",
+      "weight": 0.075,
+      "phase": "boil",
+      "interval": 60
     },
     {
-      hop: "Cascade",
-      weight: "80",
-      phase: "boil",
-      interval: "10"
+      "hop": "Cascade",
+      "weight": 0.08,
+      "phase": "boil",
+      "interval": 10
     },
     {
-      hop: "Citra",
-      weight: "75",
-      phase: "boil",
-      interval: "0"
+      "hop": "Citra",
+      "weight": 0.075,
+      "phase": "boil",
+      "interval": 0
     },
     {
-      hop: "Citra",
-      weight: "95",
-      phase: "dryhop",
-      interval: "0"
+      "hop": "Citra",
+      "weight": 0.095,
+      "phase": "dryhop",
+      "interval": 0
     }
   ],
-  extras: [
+  "extras": [
     {
-      name: "nope"
+      "name": "nope"
     }
   ],
-  evaluation: "not yet"
+  "evaluation": "not yet"
 }
