@@ -1,0 +1,83 @@
+{
+  "name": "Saison",
+  "type": "Ale",
+  "ingredients": {
+    "water": [
+      {
+        "name": "initial",
+        "volume": 22.8
+      },
+      {
+        "name": "sparge",
+        "volume": 36.5
+      }
+    ],
+    "malts": [
+      {
+        "name": "Weyermann Extra Pale Premium Pilsner",
+        "weight": 6.600
+      },
+      {
+        "name": "Weyermann Münchner",
+        "weight": 1.650
+      },
+      {
+        "name": "Brouwland Wheat Malt",
+        "weight": 0.300
+      },
+      {
+        "name": "Brouwland Special B",
+        "weight": 0.250
+      },
+      {
+        "name": "Weyermann Caramünch Type II.",
+        "weight": 0.250
+      }
+    ],
+    "hops": [
+      {
+        "name": "Magnum",
+        "weight": 0.024
+      },
+      {
+        "name": "Styrian Golding",
+        "weight": 0.037
+      }
+    ],
+    "yeast": {
+      "name": "Belgian saison",
+      "weight": 0.019
+    }
+  },
+  "mash_steps": [
+    {
+      "temperature": 65,
+      "interval": 60
+    }
+  ],
+  "hop_steps": [
+    {
+      "hop": "Magnum",
+      "weight": 0.024,
+      "phase": "boil",
+      "interval": 70
+    },
+    {
+      "hop": "Styrian·Golding",
+      "weight": 0.037,
+      "phase": "boil",
+      "interval": 0
+    }
+  ],
+  "extras": [
+    {
+      "name": "Protofloc",
+      "weight": 0.002
+    },
+    {
+      "name": "Honey",
+      "weight": 0.370
+    }
+  ],
+  "evaluation": "not yet"
+}
