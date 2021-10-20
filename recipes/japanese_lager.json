@@ -1,0 +1,73 @@
+{
+  "name": "Japanese rice lager",
+  "type": "Lager",
+  "ingredients": {
+    "water": [
+      {
+        "name": "initial",
+        "volume": 24
+      },
+      {
+        "name": "sparge",
+        "volume": 31
+      }
+    ],
+    "malts": [
+      {
+        "name": "Weyermann Extra Pale Premium Pilsner",
+        "mass": 8.7
+      },
+      {
+        "name": "Rice flakes",
+        "mass": 0.925
+      }
+    ],
+    "hops": [
+      {
+        "name": "Sorachi Ace",
+        "mass": 0.033
+      },
+      {
+        "name": "Saaz",
+        "mass": 0.01
+      }
+    ],
+    "yeast": {
+      "name": "Saflager S-23",
+      "mass": 0.042
+    }
+  },
+  "mash_steps": [
+    {
+      "temperature": 65,
+      "interval": 60
+    }
+  ],
+  "hop_steps": [
+    {
+      "hop": "Sorachi Ace",
+      "mass": 0.024,
+      "phase": "boil",
+      "interval": 75
+    },
+    {
+      "hop": "Sorachi Ace",
+      "mass": 0.009,
+      "phase": "boil",
+      "interval": 15
+    },
+    {
+      "hop": "Saaz",
+      "mass": 0.009,
+      "phase": "boil",
+      "interval": 0
+    }
+  ],
+  "extras": [
+    {
+      "name": "Protofloc",
+      "mass": 0.002
+    }
+  ],
+  "evaluation": "not yet"
+}
