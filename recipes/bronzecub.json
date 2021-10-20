@@ -15,30 +15,30 @@
     "malts": [
       {
         "name": "Pale Ale",
-        "weight": 8
+        "mass": 8
       },
       {
         "name": "Crystal",
-        "weight": 1.5
+        "mass": 1.5
       }
     ],
     "hops": [
       {
         "name": "Tomahawk",
-        "weight": 0.075
+        "mass": 0.075
       },
       {
         "name": "Cascade",
-        "weight": 0.08
+        "mass": 0.08
       },
       {
         "name": "Citra",
-        "weight": 0.17
+        "mass": 0.17
       }
     ],
     "yeast": {
       "name": "Safale US-05",
-      "weight": 0.02
+      "mass": 0.02
     }
   },
   "mash_steps": [
@@ -58,25 +58,25 @@
   "hop_steps": [
     {
       "hop": "Tomahawk",
-      "weight": 0.075,
+      "mass": 0.075,
       "phase": "boil",
       "interval": 60
     },
     {
       "hop": "Cascade",
-      "weight": 0.08,
+      "mass": 0.08,
       "phase": "boil",
       "interval": 10
     },
     {
       "hop": "Citra",
-      "weight": 0.075,
+      "mass": 0.075,
       "phase": "boil",
       "interval": 0
     },
     {
       "hop": "Citra",
-      "weight": 0.095,
+      "mass": 0.095,
       "phase": "dryhop",
       "interval": 0
     }
